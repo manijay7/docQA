@@ -97,7 +97,7 @@ def main():
             st.write(f"Selected: {pathname}")
 
     # Create a new, empty Chroma object to receive input based on the previous document selection
-    print(embeddings)
+    
     embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)  
     DB_final = Chroma(persist_directory=os.path.join(SUB_EMB),embedding_function=embeddings)
     #loop to load all chorma embedding databases of selected files from disk to vector store
