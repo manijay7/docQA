@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores.chroma  import Chroma
 from langchain_community.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.callbacks import get_openai_callback
