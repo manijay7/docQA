@@ -4,9 +4,11 @@ import streamlit as st
 from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings
+#from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores.chroma  import Chroma
-from langchain_community.llms import OpenAI
+#from langchain_community.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.callbacks import get_openai_callback
 from langchain.schema import Document
@@ -95,7 +97,7 @@ def main():
 
     # Create a new, empty Chroma object to receive input based on the previous document selection
     
-    DB_final = Chroma(embedding_function=embeddings)
+    DB_final = Chroma(persist_directory=os.path.join(SUB_EMB),embedding_function=embeddings)
     #loop to load all chorma embedding databases of selected files from disk to vector store
     if l_db_pathes_to_load == ["No confirmed selection yet!"]:
         for pathname in l_db_pathes_to_load:
