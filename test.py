@@ -98,8 +98,8 @@ def main():
 
     # Create a new, empty Chroma object to receive input based on the previous document selection
     
-    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)  
-    DB_final = Chroma(persist_directory=os.path.join(SUB_EMB),embedding_function=embeddings)
+    
+    DB_final = Chroma(persist_directory=os.path.join(SUB_EMB))
     #loop to load all chorma embedding databases of selected files from disk to vector store
     if l_db_pathes_to_load == ["No confirmed selection yet!"]:
         for pathname in l_db_pathes_to_load:
