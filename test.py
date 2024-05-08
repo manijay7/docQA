@@ -14,6 +14,10 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain_community.callbacks.manager import get_openai_callback
 from langchain.schema import Document
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 ##########################################################################
 ## DEFINE VARIABLES
@@ -99,8 +103,8 @@ def main():
     # Create a new, empty Chroma object to receive input based on the previous document selection
     
     
-    #DB_final = Chroma(persist_directory=os.path.join('SUB_EMB'),embedding_function=embeddings)
-    DB_final = Chroma(persist_directory=os.path.join(os.getcwd(), 'SUB_EMB'))
+    DB_final = Chroma(persist_directory="SUB_EMB\\",embedding_function=embeddings)
+    #DB_final = Chroma(persist_directory=os.path.join(os.getcwd(), 'SUB_EMB'))
 
     #loop to load all chorma embedding databases of selected files from disk to vector store
     if l_db_pathes_to_load == ["No confirmed selection yet!"]:
