@@ -10,7 +10,8 @@ from langchain_community.vectorstores.chroma  import Chroma
 #from langchain_community.llms import OpenAI
 from langchain_openai import OpenAI
 from langchain.chains import ConversationalRetrievalChain
-from langchain.callbacks import get_openai_callback
+#from langchain.callbacks import get_openai_callback
+from langchain_community.callbacks.manager import get_openai_callback
 from langchain.schema import Document
 
 
@@ -96,7 +97,8 @@ def main():
             st.write(f"Selected: {pathname}")
 
     # Create a new, empty Chroma object to receive input based on the previous document selection
-    
+    print(embeddings)
+    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)  
     DB_final = Chroma(persist_directory=os.path.join(SUB_EMB),embedding_function=embeddings)
     #loop to load all chorma embedding databases of selected files from disk to vector store
     if l_db_pathes_to_load == ["No confirmed selection yet!"]:
